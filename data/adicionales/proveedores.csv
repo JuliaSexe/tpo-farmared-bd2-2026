@@ -1,0 +1,11 @@
+id_proveedor,razon_social,cuit,tipo,ciudad,provincia,telefono,activo
+PRV006,Proveedor Demo 6 S.A.,30-90000006-0,Laboratorio,Buenos Aires,Buenos Aires,1199200006,True
+PRV007,Proveedor Demo 7 S.A.,30-90000007-0,Droguería,Rosario,Santa Fe,1199200007,True
+PRV008,Proveedor Demo 8 S.A.,30-90000008-0,Laboratorio,Buenos Aires,Buenos Aires,1199200008,True
+PRV009,Proveedor Demo 9 S.A.,30-90000009-0,Droguería,Rosario,Santa Fe,1199200009,True
+PRV010,Proveedor Demo 10 S.A.,30-90000010-0,Laboratorio,Buenos Aires,Buenos Aires,1199200010,True
+PRV011,Proveedor Demo 11 S.A.,30-90000011-0,Droguería,Rosario,Santa Fe,1199200011,True
+PRV012,Proveedor Demo 12 S.A.,30-90000012-0,Laboratorio,Buenos Aires,Buenos Aires,1199200012,True
+PRV013,Proveedor Demo 13 S.A.,30-90000013-0,Droguería,Rosario,Santa Fe,1199200013,True
+PRV014,Proveedor Demo 14 S.A.,30-90000014-0,Laboratorio,Buenos Aires,Buenos Aires,1199200014,True
+PRV015,Proveedor Demo 15 S.A.,30-90000015-0,Droguería,Rosario,Santa Fe,1199200015,False

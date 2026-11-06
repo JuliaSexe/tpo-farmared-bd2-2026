@@ -1,0 +1,11 @@
+id_sucursal,nombre,tipo,direccion,ciudad,provincia,telefono,activo
+S006,Farmacia Demo 6,Farmacia,Calle Prueba 600,Buenos Aires,Buenos Aires,1199300006,True
+S007,Farmacia Demo 7,Farmacia,Calle Prueba 700,Rosario,Santa Fe,1199300007,True
+S008,Farmacia Demo 8,Farmacia,Calle Prueba 800,Córdoba,Córdoba,1199300008,True
+S009,Farmacia Demo 9,Farmacia,Calle Prueba 900,Buenos Aires,Buenos Aires,1199300009,True
+S010,Farmacia Demo 10,Farmacia,Calle Prueba 1000,Rosario,Santa Fe,1199300010,True
+S011,Farmacia Demo 11,Farmacia,Calle Prueba 1100,Córdoba,Córdoba,1199300011,True
+S012,Farmacia Demo 12,Farmacia,Calle Prueba 1200,Buenos Aires,Buenos Aires,1199300012,True
+S013,Farmacia Demo 13,Farmacia,Calle Prueba 1300,Rosario,Santa Fe,1199300013,True
+S014,Farmacia Demo 14,Farmacia,Calle Prueba 1400,Córdoba,Córdoba,1199300014,False
+S015,Droguería Demo 15,Droguería,Calle Prueba 1500,Buenos Aires,Buenos Aires,1199300015,True

@@ -1,0 +1,11 @@
+id_farmaceutico,nombre,apellido,matricula,cargo,id_sucursal,activo
+F008,FarmaceuticoTest8,Prueba,MN-TEST-008,Farmacéutico,S006,True
+F009,FarmaceuticoTest9,Prueba,MN-TEST-009,Farmacéutico,S007,True
+F010,FarmaceuticoTest10,Prueba,MN-TEST-010,Farmacéutico,S008,True
+F011,FarmaceuticoTest11,Prueba,MN-TEST-011,Farmacéutico,S009,True
+F012,FarmaceuticoTest12,Prueba,MN-TEST-012,Farmacéutico,S010,True
+F013,FarmaceuticoTest13,Prueba,MN-TEST-013,Farmacéutico,S011,True
+F014,FarmaceuticoTest14,Prueba,MN-TEST-014,Farmacéutico,S012,True
+F015,FarmaceuticoTest15,Prueba,MN-TEST-015,Farmacéutico,S013,True
+F016,FarmaceuticoTest16,Prueba,MN-TEST-016,Farmacéutico,S014,False
+F017,FarmaceuticoTest17,Prueba,MN-TEST-017,Farmacéutico,S015,True

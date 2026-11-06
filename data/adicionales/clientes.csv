@@ -1,0 +1,11 @@
+id_cliente,nombre,apellido,dni,email,telefono,ciudad,provincia,obra_social,nro_afiliado,activo
+C009,ClienteTest9,Prueba,90000009,cliente9@example.com,1199000009,Buenos Aires,Buenos Aires,OSDE,TEST-009,True
+C010,ClienteTest10,Prueba,90000010,cliente10@example.com,1199000010,Rosario,Santa Fe,Sin cobertura,,True
+C011,ClienteTest11,Prueba,90000011,cliente11@example.com,1199000011,Córdoba,Córdoba,PAMI,TEST-011,True
+C012,ClienteTest12,Prueba,90000012,cliente12@example.com,1199000012,Buenos Aires,Buenos Aires,OSDE,TEST-012,True
+C013,ClienteTest13,Prueba,90000013,cliente13@example.com,1199000013,Rosario,Santa Fe,Sin cobertura,,True
+C014,ClienteTest14,Prueba,90000014,cliente14@example.com,1199000014,Córdoba,Córdoba,OSDE,TEST-014,True
+C015,ClienteTest15,Prueba,90000015,cliente15@example.com,1199000015,Buenos Aires,Buenos Aires,PAMI,TEST-015,True
+C016,ClienteTest16,Prueba,90000016,cliente16@example.com,1199000016,Rosario,Santa Fe,Sin cobertura,,True
+C017,ClienteTest17,Prueba,90000017,cliente17@example.com,1199000017,Córdoba,Córdoba,PAMI,TEST-017,False
+C018,ClienteTest18,Prueba,90000018,cliente18@example.com,1199000018,Buenos Aires,Buenos Aires,Sin cobertura,,True

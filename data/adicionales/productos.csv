@@ -1,0 +1,11 @@
+id_producto,nombre,principio_activo,categoria,presentacion,condicion_venta,precio_unit,id_proveedor,activo
+PRD014,Vitamina C 500mg x20,Ácido ascórbico,Vitaminas,Comprimidos x20,Venta libre,2500,PRV006,True
+PRD015,Solución fisiológica 100ml,Cloruro de sodio,Soluciones,Frasco 100 ml,Venta libre,1400,PRV007,True
+PRD016,Termómetro digital,No aplica,Instrumental,Unidad,Venta libre,3300,PRV008,True
+PRD017,Barbijos descartables x10,No aplica,Protección,Caja x10,Venta libre,1900,PRV009,True
+PRD018,Crema hidratante 200ml,No aplica,Dermocosmética,Pote 200 ml,Venta libre,4700,PRV010,True
+PRD019,Cefalexina 500mg x16,Cefalexina,Antibiótico,Cápsulas x16,Bajo receta,11200,PRV011,True
+PRD020,Clonazepam 0.5mg x30,Clonazepam,Ansiolítico,Comprimidos x30,Bajo receta archivada,8500,PRV012,True
+PRD021,Tiras reactivas glucosa x25,No aplica,Diagnóstico,Caja x25,Venta libre,7000,PRV013,True
+PRD022,Losartán 25mg x30,Losartán,Antihipertensivo,Comprimidos x30,Bajo receta,4800,PRV014,True
+PRD023,Alcohol etílico 70% 500ml,Alcohol etílico,Antiséptico,Frasco 500 ml,Venta libre,1800,PRV015,False

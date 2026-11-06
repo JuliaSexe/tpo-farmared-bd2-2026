@@ -1,0 +1,11 @@
+id_receta,id_cliente,medico,matricula_medico,fecha_emision,tipo,dispensas_autorizadas,dispensas_realizadas,proxima_dispensa,estado
+RC010,C009,Dra. Demo A,MP-DEMO-010,2026-10-28,Simple,1,0,,Vigente
+RC011,C010,Dr. Demo B,MP-DEMO-011,2026-08-30,Tratamiento prolongado,3,1,2026-10-05,Vigente
+RC012,C011,Dra. Demo C,MP-DEMO-012,2026-09-30,Tratamiento prolongado,3,1,2026-11-04,Vigente
+RC013,C012,Dr. Demo D,MP-DEMO-013,2026-11-01,Simple,1,1,,Completada
+RC014,C013,Dra. Demo E,MP-DEMO-014,2026-08-01,Simple,1,0,,Vencida
+RC015,C014,Dr. Demo F,MP-DEMO-015,2026-10-20,Tratamiento prolongado,3,1,2026-11-19,Vigente
+RC016,C009,Dra. Demo G,MP-DEMO-016,2026-09-01,Tratamiento prolongado,3,2,2026-11-05,Vigente
+RC017,C015,Dr. Demo H,MP-DEMO-017,2026-10-30,Archivada,1,0,,Vigente
+RC018,C016,Dra. Demo I,MP-DEMO-018,2026-11-01,Simple,1,0,,Vigente
+RC019,C017,Dr. Demo J,MP-DEMO-019,2026-01-10,Simple,1,0,,Vencida

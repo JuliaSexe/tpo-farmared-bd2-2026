@@ -1,0 +1,13 @@
+{
+  "name": "FarmaRed - Base de Datos II",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/farmared",
+  "shutdownAction": "stopCompose",
+  "postCreateCommand": "python scripts/inicializar_mongo.py && python scripts/verificar_entorno.py",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-python.vscode-pylance"]
+    }
+  }
+}

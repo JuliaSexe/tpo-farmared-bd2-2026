@@ -21,7 +21,6 @@ Las estructuras anteriores de Q07/Q08/Q11 se mantienen. Redis **no** almacena el
 Desde la raíz del repositorio en Codespaces:
 
 ```bash
-unzip -o farmared-q04-q05-redis.zip -d .
 python scripts/construir_redis.py
 python src/consultas/q04_clientes_multiples_recetas.py
 python src/consultas/q05_ventas_farmaceuticos.py

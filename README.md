@@ -2,7 +2,7 @@
 
 Implementación de una arquitectura de persistencia políglota sobre **MongoDB** (documentos) y **Redis** (clave-valor), desarrollada en Python y preparada para **GitHub Codespaces**.
 
-## Arquitectura
+## Arquitectura   
 
 | Componente | Responsabilidad |
 |---|---|

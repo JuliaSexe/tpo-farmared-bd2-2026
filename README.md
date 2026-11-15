@@ -121,7 +121,7 @@ python scripts/auditar_tpo.py
 ## Pruebas y demostración
 
 ```bash
-# 4 pruebas unitarias de FEFO; no modifican las bases
+# 13 pruebas automatizadas: 4 de FEFO y 9 de validaciones Q13 y consistencia Redis. No modifican las bases.
 python -m unittest discover -s tests -v
 
 # Consistencia completa de proyecciones (solo lectura)

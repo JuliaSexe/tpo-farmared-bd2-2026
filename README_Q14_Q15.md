@@ -51,7 +51,7 @@ python src/servicios/q14_registrar_venta.py \
   --medio-pago Débito --item PRD014:20 --item PRD015:2
 ```
 
-Si se ejecuta antes del **07/02/2027** y los lotes mantienen stock suficiente, el producto PRD014 debe consumir 15 unidades de L019 (vencimiento 09/11/2026) y 5 unidades de L020; PRD015 consume 2 de L029. El total es **ARS 52.800**. Se guarda `stock_aplicado=True` y `lotes_consumidos` con los lotes y unidades.
+Si se ejecuta antes del **07/02/2027** y los lotes mantienen stock suficiente, el producto PRD014 debe consumir 15 unidades de L019 (vencimiento 07/02/2027) y 5 unidades de L020; PRD015 consume 2 de L029. El total es **ARS 52.800**. Se guarda `stock_aplicado=True` y `lotes_consumidos` con los lotes y unidades.
 
 **Importante:** L019 vence el 07/02/2027. Después de esa fecha no debe consumirse. La prueba sigue siendo válida, pero el plan FEFO cambiará (L020 absorberá las 20 unidades). No fijamos la fecha artificialmente para forzar el ejemplo: usamos la fecha real de Argentina.
 

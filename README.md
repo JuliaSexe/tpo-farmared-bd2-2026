@@ -1,4 +1,4 @@
-# FarmaRed — TPO Base de Datos II — 2.º cuatrimestre 2026
+# FarmaRed — TPO Base de Datos II — Grupo 03 — 2Q 2026
 
 Implementación de una arquitectura de persistencia políglota sobre **MongoDB** (documentos) y **Redis** (clave-valor), desarrollada en Python y preparada para **GitHub Codespaces**.
 

@@ -25,8 +25,8 @@ Redis no es parte de la transacción. Cada venta nueva tiene `redis_sync='pendie
 
 ## Pruebas en Codespaces (desde raíz del repositorio)
 
-1. Copiar este ZIP en la raíz y descomprimir con `unzip -o farmared-q14-q15.zip -d .`.
-2. Ejecutar `python -m unittest discover -s tests -v` para probar FEFO sin escribir en las bases.
+1. Abrir el repositorio en GitHub Codespaces. Si se trata de un entorno nuevo, realizar primero la carga inicial de MongoDB y Redis siguiendo las instrucciones del README.md. No es necesario descargar ni descomprimir archivos ZIP, ya que toda la implementación está incorporada en el repositorio.
+2. Ejecutar python -m unittest discover -s tests -v para verificar las 13 pruebas automatizadas: cuatro de FEFO y nueve de validaciones de cobertura y consistencia de Redis. Estas pruebas no modifican las bases de datos.
 3. Inspeccionar lotes iniciales y ausencia de venta V901:
 
 ```bash

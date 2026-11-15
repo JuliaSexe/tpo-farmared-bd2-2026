@@ -5,6 +5,12 @@ from pymongo import MongoClient
 
 
 def q01_productos_proveedores(db):
+    """Propósito: productos activos con todos los datos de proveedor.
+
+        Parámetros: db (MongoDB).
+        Retorno: lista de diccionarios producto/proveedor.
+        Motor: MongoDB ($lookup).
+        """
     pipeline = [
         {
             "$match": {"activo": True}

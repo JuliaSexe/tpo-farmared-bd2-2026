@@ -90,6 +90,8 @@ def registrar_venta(client, id_venta, id_cliente, id_farmaceutico, medio_pago,
         cliente = db.clientes.find_one({"_id": id_cliente}, session=session)
         if not cliente or cliente.get("activo") is not True:
             raise ReglaNegocioError("El cliente debe existir y estar activo")
+        if medio_pago == "Obra social" and cliente.get("obra_social") in (None, "Sin cobertura"):
+            raise ReglaNegocioError("No se permite pagar con Obra social a un cliente sin cobertura")
         farm = db.farmaceuticos.find_one({"_id": id_farmaceutico}, session=session)
         if not farm or farm.get("activo") is not True:
             raise ReglaNegocioError("El farmacéutico debe existir y estar activo")

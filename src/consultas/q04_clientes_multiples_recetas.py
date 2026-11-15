@@ -3,6 +3,11 @@
 MongoDB: datos descriptivos del cliente. Redis Hash: total de recetas de
 cualquier estado por id_cliente. Ejecutar construir_redis.py previamente.
 """
+
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[2]))
+from src.consultas.consistencia_redis import verificar_proyecciones
 import os
 from pprint import pprint
 
@@ -14,6 +19,13 @@ MARCA = "farmared:meta:reconstruccion"
 
 
 def q04_clientes_multiples_recetas(db, redis):
+    """Propósito: clientes con más de una receta, de cualquier estado.
+
+        Parámetros: db (MongoDB), redis (Redis).
+        Retorno: lista de clientes con cantidad de recetas.
+        Motores: Redis (conteos), MongoDB (clientes).
+        """
+    verificar_proyecciones(db, redis)
     if not redis.exists(MARCA) or not redis.exists(CLAVE):
         raise RuntimeError("Índice Q04 no construido. Ejecutar python scripts/construir_redis.py")
 

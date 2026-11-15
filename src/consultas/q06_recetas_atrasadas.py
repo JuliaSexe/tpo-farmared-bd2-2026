@@ -9,6 +9,12 @@ from pymongo import MongoClient
 def q06_recetas_atrasadas(db):
 
     # Fecha actual de Argentina.
+    """Propósito: tratamientos prolongados vigentes con dispensa atrasada.
+
+        Parámetros: db (MongoDB).
+        Retorno: lista de recetas y datos de clientes.
+        Motor: MongoDB.
+        """
     hoy = datetime.now(
         ZoneInfo("America/Argentina/Buenos_Aires")
     ).date()

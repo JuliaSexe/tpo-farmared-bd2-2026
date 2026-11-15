@@ -1,4 +1,9 @@
 
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[2]))
+from src.consultas.consistencia_redis import verificar_proyecciones
+
 import os
 from pprint import pprint
 from pymongo import MongoClient
@@ -6,6 +11,13 @@ from redis import Redis
 
 
 def q08_lotes_stock_bajo(db, redis):
+    """Propósito: lotes con menos de 50 unidades y datos asociados.
+
+        Parámetros: db (MongoDB), redis (Redis).
+        Retorno: lista de lotes, productos, sucursales y proveedores.
+        Motores: Redis (índice), MongoDB (información relacionada).
+        """
+    verificar_proyecciones(db, redis)
     clave = "farmared:stock:por_unidades"
 
     if not redis.exists(clave):

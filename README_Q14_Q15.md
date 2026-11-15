@@ -5,7 +5,7 @@
 | Archivo | Responsabilidad |
 |---|---|
 | `src/servicios/q14_registrar_venta.py` | Valida cliente, farmacéutico, farmacia, productos y receta; calcula precio y total; crea venta completada y llama Q15 dentro de la misma transacción. |
-| `src/servicios/q15_actualizar_stock.py` | Aplica el FEFO a los lotes vigentes de la sucursal, con actualizaciones condicionadas y bandera `stock_aplicado`. Incluye función independiente para ventas `Completada` previamente registradas sin stock aplicado. |
+| `src/servicios/q15_actualizar_stock.py` | Se ejecuta integrado en Q14, dentro de la misma transacción de una venta. La entrada técnica independiente solo permite reintentos sobre ventas ya registradas `Completada` y con `stock_aplicado=False`; nunca modifica stock sin una venta previa. |
 | `src/servicios/reglas_stock.py` | Valida y agrupa cantidades por producto; planifica FEFO antes de escribir. |
 | `scripts/sincronizar_redis.py` | Reconstruye las proyecciones Redis a partir de un snapshot MongoDB y marca como sincronizadas las ventas pendientes. |
 | `scripts/inspeccionar_venta.py` | Muestra una venta y sus lotes, opcionalmente receta; no modifica datos. |
@@ -51,9 +51,9 @@ python src/servicios/q14_registrar_venta.py \
   --medio-pago Débito --item PRD014:20 --item PRD015:2
 ```
 
-Si se ejecuta el **06/11/2026**, el producto PRD014 debe consumir 15 unidades de L019 (vencimiento 09/11/2026) y 5 unidades de L020; PRD015 consume 2 de L029. El total es **ARS 52.800**. Se guarda `stock_aplicado=True` y `lotes_consumidos` con los lotes y unidades.
+Si se ejecuta antes del **07/02/2027** y los lotes mantienen stock suficiente, el producto PRD014 debe consumir 15 unidades de L019 (vencimiento 09/11/2026) y 5 unidades de L020; PRD015 consume 2 de L029. El total es **ARS 52.800**. Se guarda `stock_aplicado=True` y `lotes_consumidos` con los lotes y unidades.
 
-**Importante:** L019 vence el 09/11/2026. Después de esa fecha no debe consumirse. La prueba sigue siendo válida, pero el plan FEFO cambiará (L020 absorberá las 20 unidades). No fijamos la fecha artificialmente para forzar el ejemplo: usamos la fecha real de Argentina.
+**Importante:** L019 vence el 07/02/2027. Después de esa fecha no debe consumirse. La prueba sigue siendo válida, pero el plan FEFO cambiará (L020 absorberá las 20 unidades). No fijamos la fecha artificialmente para forzar el ejemplo: usamos la fecha real de Argentina.
 
 6. Verificar estado:
 

@@ -4,6 +4,12 @@ from pymongo import MongoClient
 
 
 def q02_ventas_pendientes(db):
+    """Propósito: ventas Pendiente, farmacéutico, sucursal y total.
+
+        Parámetros: db (MongoDB).
+        Retorno: lista de ventas con datos relacionados.
+        Motor: MongoDB ($lookup).
+        """
     pipeline = [
         {
             "$match": {

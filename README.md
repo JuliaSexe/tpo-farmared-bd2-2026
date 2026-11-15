@@ -43,6 +43,8 @@ python scripts/validar_agregaciones_redis.py
 python scripts/auditar_tpo.py
 ```
 
+**Actualización de escenario FEFO:** el CSV adicional de `L019` vence ahora el 07/02/2027 (+90 días). Como los cargadores usan `$setOnInsert`, este cambio no sobreescribe el lote de una base existente. Para un entorno ya cargado, ver `scripts/actualizar_fecha_demo_l019.py` y ejecutar la reconstrucción de Redis; para un Codespace nuevo basta la carga habitual. Las pruebas usan la fecha actual y no prometen que L019 siga vigente después del 07/02/2027.
+
 Los scripts de carga son **idempotentes respecto de inserciones** (`$setOnInsert`): ejecutarlos nuevamente no duplica las filas ya importadas. Tampoco restablecen las modificaciones efectuadas por pruebas anteriores. La reconstrucción Redis reemplaza sus proyecciones desde el estado **actual** de MongoDB; no correrla mientras se hacen otras escrituras.
 
 **Estado de demo:** si se utilizó previamente Q13/Q14/Q15, los conteos originales cambian (nuevos clientes, ventas, receta RC002 completada y stock descontado). No asumir que los resultados serán idénticos a los de una carga limpia; verificar con `scripts/auditar_tpo.py`.

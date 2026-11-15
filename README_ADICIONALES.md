@@ -7,7 +7,7 @@ Todos los nuevos nombres, documentos y datos identificatorios fueron **creados a
 - 9 archivos CSV con 10 o 11 filas cada uno: 10 clientes, 10 sucursales, 10 farmacéuticos, 10 proveedores, 10 productos, 11 lotes, 10 recetas, 10 ventas y 11 detalles.
 - Los 11 detalles se embeben dentro de las 10 ventas, porque la colección MongoDB `ventas` es documental.
 - Casos: farmacias activas e inactivas, droguería, clientes sin ventas, farmacéuticos con cero ventas, recetas atrasadas y vencidas, ventas pendientes y anuladas, ventas completadas de noviembre de 2026, lotes con stock bajo, agotados y vencidos.
-- FEFO: `L019` y `L020` contienen el mismo producto `PRD014` en `S006` y vencen en fechas distintas. Permiten probar q15 con una venta nueva que requiera unidades de ambos lotes.
+- FEFO: `L019` (07/02/2027) y `L020` (30/09/2027) contienen `PRD014` en `S006`. Si la prueba se ejecuta antes de que venza L019 y queda stock, pueden consumirse ambos lotes. Después del vencimiento no debe consumirse L019. La fecha de L019 se desplazó +90 días respecto del CSV adicional inicial. `L027` permanece vencido intencionalmente para probar la exclusión.
 
 ## Cargar (solo después de cargar los originales)
 

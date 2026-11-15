@@ -20,6 +20,21 @@ CAMPOS_MODIFICABLES = (
     "email", "telefono", "ciudad", "provincia", "obra_social", "nro_afiliado"
 )
 
+COBERTURAS = {"OSDE", "Swiss Medical", "PAMI", "IOMA", "Galeno", "Sin cobertura"}
+
+
+def validar_cobertura(documento):
+    """Valida cobertura y afiliado sobre el estado final del cliente."""
+    cobertura = documento.get("obra_social")
+    afiliado = documento.get("nro_afiliado")
+    if cobertura not in COBERTURAS:
+        raise ValueError(f"Obra social no permitida: {cobertura}")
+    if cobertura == "Sin cobertura":
+        if afiliado not in (None, ""):
+            raise ValueError("Sin cobertura no debe tener nro_afiliado")
+    elif not isinstance(afiliado, str) or not afiliado.strip():
+        raise ValueError("Una obra social requiere nro_afiliado")
+
 
 def verificar_texto(campo, valor):
     """Valida los valores de texto obligatorios conservando su tipo String."""
@@ -37,6 +52,9 @@ def alta_cliente(db, datos):
         "id_cliente", "nombre", "apellido", "dni", "email", "telefono",
         "ciudad", "provincia", "obra_social"
     )
+    faltantes = [campo for campo in obligatorios if campo not in datos]
+    if faltantes:
+        raise ValueError(f"Faltan campos obligatorios: {', '.join(faltantes)}")
     documento = {campo: verificar_texto(campo, datos[campo]) for campo in obligatorios}
     documento["_id"] = documento["id_cliente"]
     documento["nro_afiliado"] = (
@@ -44,6 +62,7 @@ def alta_cliente(db, datos):
         if datos.get("nro_afiliado") else None
     )
     documento["activo"] = True
+    validar_cobertura(documento)
 
     try:
         db.clientes.insert_one(documento)
@@ -69,6 +88,15 @@ def modificar_cliente(db, id_cliente, cambios):
             actualizaciones[campo] = None
         else:
             actualizaciones[campo] = verificar_texto(campo, valor)
+
+    actual = db.clientes.find_one({"_id": id_cliente})
+    if actual is None:
+        raise ValueError(f"No existe el cliente {id_cliente}")
+    # Cambiar a Sin cobertura limpia el afiliado previo de forma explícita.
+    if actualizaciones.get("obra_social") == "Sin cobertura" and "nro_afiliado" not in actualizaciones:
+        actualizaciones["nro_afiliado"] = None
+    propuesto = {**actual, **actualizaciones}
+    validar_cobertura(propuesto)
 
     documento = db.clientes.find_one_and_update(
         {"_id": id_cliente},

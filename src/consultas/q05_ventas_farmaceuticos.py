@@ -4,6 +4,11 @@ MongoDB: lista completa de farmacéuticos activos. Redis: ZCOUNT sobre un
 Sorted Set por farmacéutico con todas las ventas no anuladas indexadas.
 La fecha es un día de calendario guardado como medianoche UTC en el CSV.
 """
+
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[2]))
+from src.consultas.consistencia_redis import verificar_proyecciones
 import os
 from datetime import datetime, timedelta, time, timezone
 from pprint import pprint
@@ -17,6 +22,13 @@ MARCA = "farmared:meta:reconstruccion"
 
 
 def q05_ventas_farmaceuticos(db, redis):
+    """Propósito: ventas no anuladas de los últimos 60 días, incluidos ceros.
+
+        Parámetros: db (MongoDB), redis (Redis).
+        Retorno: lista de farmacéuticos activos y cantidades.
+        Motores: Redis (ZCOUNT), MongoDB (farmacéuticos).
+        """
+    verificar_proyecciones(db, redis)
     if not redis.exists(MARCA):
         raise RuntimeError("Índice Q05 no construido. Ejecutar python scripts/construir_redis.py")
 

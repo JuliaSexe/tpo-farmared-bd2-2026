@@ -8,6 +8,12 @@ from pymongo import MongoClient
 
 def q12_clientes_sin_ventas(db):
 
+    """Propósito: clientes sin ventas registradas en el último año.
+
+        Parámetros: db (MongoDB).
+        Retorno: lista de clientes sin ventas recientes.
+        Motor: MongoDB.
+        """
     hoy = datetime.now(
         ZoneInfo("America/Argentina/Buenos_Aires")
     ).date()

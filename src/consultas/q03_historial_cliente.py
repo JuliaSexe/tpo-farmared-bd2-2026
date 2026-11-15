@@ -7,6 +7,12 @@ from pymongo import MongoClient
 
 def q03_historial_cliente(db, id_cliente):
     # Verificar que el cliente exista.
+    """Propósito: historial cronológico de recetas y ventas por cliente.
+
+        Parámetros: db (MongoDB), id_cliente (str).
+        Retorno: estructura de cliente e historial.
+        Motor: MongoDB.
+        """
     cliente = db.clientes.find_one(
         {"_id": id_cliente},
         {"_id": 0}

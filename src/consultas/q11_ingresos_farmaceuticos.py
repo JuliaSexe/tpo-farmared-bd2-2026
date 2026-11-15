@@ -1,4 +1,9 @@
 
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[2]))
+from src.consultas.consistencia_redis import verificar_proyecciones, verificar_mes_sin_ventas
+
 import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -11,6 +16,13 @@ from redis import Redis
 def q11_ingresos_farmaceuticos(db, redis):
 
     # Mes actual según la fecha de Argentina.
+    """Propósito: ingresos del mes actual por farmacéutico, incluidos ceros.
+
+        Parámetros: db (MongoDB), redis (Redis).
+        Retorno: lista de farmacéuticos con ingresos mensuales.
+        Motores: Redis (Hash), MongoDB (farmacéuticos/validación).
+        """
+    verificar_proyecciones(db, redis)
     mes_actual = datetime.now(
         ZoneInfo("America/Argentina/Buenos_Aires")
     ).strftime("%Y-%m")
@@ -20,10 +32,13 @@ def q11_ingresos_farmaceuticos(db, redis):
     )
 
     if not redis.exists(clave):
-        raise RuntimeError(
-            "No existen ingresos materializados para este mes. "
-            "Reconstruir Redis."
-        )
+        # Al iniciar un nuevo mes no existe Hash todavía: devolver ceros
+        # SOLO si MongoDB confirma que no hay ventas Completada del mes.
+        if not verificar_mes_sin_ventas(db, mes_actual):
+            raise RuntimeError(
+                "Hay ventas del mes en MongoDB pero falta la proyección Redis. "
+                "Ejecutar python scripts/construir_redis.py"
+            )
 
     # Redis devuelve los ingresos acumulados.
     ingresos = redis.hgetall(clave)

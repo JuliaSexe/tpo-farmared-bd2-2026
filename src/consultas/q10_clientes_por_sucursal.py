@@ -8,6 +8,12 @@ from pymongo import MongoClient
 def q10_clientes_por_sucursal(db, id_sucursal):
 
     # Verificar que exista la sucursal.
+    """Propósito: clientes atendidos por una sucursal (farmacéutico histórico).
+
+        Parámetros: db (MongoDB), id_sucursal (str).
+        Retorno: lista de clientes atendidos.
+        Motor: MongoDB ($lookup).
+        """
     sucursal = db.sucursales.find_one({
         "_id": id_sucursal
     })

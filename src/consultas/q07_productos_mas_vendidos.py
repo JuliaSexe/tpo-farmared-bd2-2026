@@ -1,4 +1,9 @@
 
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[2]))
+from src.consultas.consistencia_redis import verificar_proyecciones
+
 import os
 from pprint import pprint
 from pymongo import MongoClient
@@ -6,6 +11,13 @@ from redis import Redis
 
 
 def q07_productos_mas_vendidos(db, redis):
+    """Propósito: top 5 de unidades vendidas en ventas Completada.
+
+        Parámetros: db (MongoDB), redis (Redis).
+        Retorno: lista ordenada de productos y unidades.
+        Motores: Redis (ranking), MongoDB (nombres).
+        """
+    verificar_proyecciones(db, redis)
     clave = "farmared:ranking:productos:unidades"
 
     # Obtener los 5 productos con más unidades.

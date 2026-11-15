@@ -6,6 +6,12 @@ from pymongo import MongoClient
 
 def q09_ventas_libres(db):
 
+    """Propósito: ventas libres menores a $5000 que no estén anuladas.
+
+        Parámetros: db (MongoDB).
+        Retorno: lista de documentos de ventas.
+        Motor: MongoDB.
+        """
     filtro = {
         "tipo": "Venta libre",
         "total": {"$lt": 5000},

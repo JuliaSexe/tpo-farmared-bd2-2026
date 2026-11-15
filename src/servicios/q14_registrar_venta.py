@@ -116,7 +116,13 @@ def registrar_venta(client, id_venta, id_cliente, id_farmaceutico, medio_pago,
         if necesita_receta and not id_receta:
             raise ReglaNegocioError("La venta contiene productos Bajo receta y requiere id_receta")
         if id_receta and not necesita_receta:
-            raise ReglaNegocioError("La venta solo contiene productos libres: no debe afectar una receta")
+            # Una receta opcional no convierte un producto libre en obligatorio bajo receta.
+            # Se verifica la referencia pero no se modifica el estado ni sus dispensas.
+            receta_opcional = db.recetas.find_one({"_id": id_receta}, session=session)
+            if not receta_opcional or receta_opcional.get("id_cliente") != id_cliente:
+                raise ReglaNegocioError(
+                    "La receta opcional debe existir y pertenecer al cliente"
+                )
 
         detalles = []
         for n, item in enumerate(items, start=1):
